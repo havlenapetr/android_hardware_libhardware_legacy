@@ -134,6 +134,10 @@ public:
                             {return mFinalInterface->setVoiceVolume(volume);}
     virtual status_t    setMasterVolume(float volume)
                             {return mFinalInterface->setMasterVolume(volume);}
+#ifdef HAVE_FM_RADIO
+    virtual status_t    setFmVolume(float volume)
+                            {return mFinalInterface->setFmVolume(volume);}
+#endif
 
     virtual status_t    setMode(int mode);
 

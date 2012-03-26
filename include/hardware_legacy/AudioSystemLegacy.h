@@ -325,6 +325,9 @@ public:
     static bool isA2dpDevice(audio_devices device) {
         return audio_is_a2dp_device((audio_devices_t)device);
     }
+    static bool isFmDevice(audio_devices device) {
+        return audio_is_fm_device((audio_devices_t)device);
+    }
     static bool isBluetoothScoDevice(audio_devices device) {
         return audio_is_bluetooth_sco_device((audio_devices_t)device);
     }

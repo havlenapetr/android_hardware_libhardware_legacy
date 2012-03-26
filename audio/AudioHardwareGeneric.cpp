@@ -144,6 +144,14 @@ status_t AudioHardwareGeneric::setVoiceVolume(float v)
     return NO_ERROR;
 }
 
+#ifdef HAVE_FM_RADIO
+status_t AudioHardwareGeneric::setFmVolume(float v)
+{
+    // Implement: set fm radio volume
+    return NO_ERROR;
+}
+#endif
+
 status_t AudioHardwareGeneric::setMasterVolume(float v)
 {
     // Implement: set master volume

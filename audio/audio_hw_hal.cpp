@@ -334,6 +334,14 @@ static int adev_init_check(const struct audio_hw_device *dev)
     return ladev->hwif->initCheck();
 }
 
+#ifdef HAVE_FM_RADIO
+static int adev_set_fm_volume(struct audio_hw_device *dev, float volume)
+{
+    struct legacy_audio_device *ladev = to_ladev(dev);
+    return ladev->hwif->setFmVolume(volume);
+}
+#endif
+
 static int adev_set_voice_volume(struct audio_hw_device *dev, float volume)
 {
     struct legacy_audio_device *ladev = to_ladev(dev);
@@ -552,6 +560,9 @@ static int legacy_adev_open(const hw_module_t* module, const char* name,
     ladev->device.get_supported_devices = adev_get_supported_devices;
     ladev->device.init_check = adev_init_check;
     ladev->device.set_voice_volume = adev_set_voice_volume;
+#ifdef HAVE_FM_RADIO
+    ladev->device.set_fm_volume = adev_set_fm_volume;
+#endif
     ladev->device.set_master_volume = adev_set_master_volume;
     ladev->device.set_mode = adev_set_mode;
     ladev->device.set_mic_mute = adev_set_mic_mute;
